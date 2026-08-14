@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafael Padrón García — Desenvolvedor de Software Jr.</title>
+<meta name="description" content="Currículo de Rafael Alejandro Padrón García, Desenvolvedor de Software Jr. / Analista de Sistemas Jr. em Vinhedo, SP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0d1117;
+    --panel: #141a22;
+    --panel-2: #10151c;
+    --border: #232b35;
+    --text: #e6edf3;
+    --muted: #8b98a5;
+    --accent: #f2a65a;
+    --accent-dim: #6b4c2c;
+    --ok: #7ee787;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --maxw: 760px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; --mx:50%; --my:0%; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(242,166,90,0.07), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+  }
+  #grid-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(230,237,243,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230,237,243,0.035) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
+  }
+  #spotlight{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:radial-gradient(600px circle at var(--mx) var(--my), rgba(242,166,90,0.06), transparent 45%);
+    transition:background .05s linear;
+  }
+  #progress-bar{
+    position:fixed; top:0; left:0; height:2.5px; width:0%;
+    background:linear-gradient(90deg, var(--accent), var(--ok));
+    z-index:50; transition:width .08s linear;
+  }
+  .topbar, main, footer{ position:relative; z-index:1; }
+  ::selection{ background:var(--accent); color:#1a1206; }
+
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    background:rgba(13,17,23,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .topbar-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--mono); font-size:13px;
+  }
+  .brand{ color:var(--text); font-weight:600; letter-spacing:.02em; }
+  .brand span{ color:var(--accent); }
+  .topbar-actions{ display:flex; gap:18px; align-items:center; }
+  .topbar-actions a{
+    color:var(--muted); font-size:13px; position:relative;
+    padding-bottom:2px; transition:color .15s ease;
+  }
+  .topbar-actions a::after{
+    content:''; position:absolute; left:0; bottom:-3px;
+    width:0; height:1px; background:var(--accent);
+    transition:width .25s ease;
+  }
+  .topbar-actions a:hover{ color:var(--accent); }
+  .topbar-actions a:hover::after{ width:100%; }
+  .print-btn{
+    font-family:var(--mono);
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text);
+    padding:6px 12px;
+    border-radius:6px;
+    font-size:12px;
+    cursor:pointer;
+    transition:border-color .15s, color .15s;
+  }
+  .print-btn:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:76px 0 40px; }
+  .status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:12.5px; color:var(--ok);
+    border:1px solid rgba(126,231,135,0.25);
+    background:rgba(126,231,135,0.06);
+    padding:5px 12px; border-radius:20px;
+    margin-bottom:28px;
+  }
+  .status .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--ok);
+    box-shadow:0 0 0 0 rgba(126,231,135,.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(126,231,135,.55); }
+    70%{ box-shadow:0 0 0 7px rgba(126,231,135,0); }
+    100%{ box-shadow:0 0 0 0 rgba(126,231,135,0); }
+  }
+
+  .prompt{
+    font-family:var(--mono); font-size:13px; color:var(--muted);
+    margin:0 0 10px; display:flex; gap:8px; align-items:baseline;
+  }
+  .prompt .sym{ color:var(--accent); }
+
+  h1{
+    font-family:var(--sans); font-weight:800;
+    font-size:clamp(28px, 5vw, 42px);
+    line-height:1.15; margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  .cursor{
+    display:inline-block; width:3px; height:0.85em;
+    background:var(--accent); margin-left:4px;
+    animation:blink 1.1s steps(1) infinite;
+    vertical-align:-2px;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .role{
+    font-family:var(--mono); color:var(--accent);
+    font-size:16px; margin:0 0 22px; font-weight:500;
+  }
+
+  .meta{
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    font-size:14px; color:var(--muted); margin-bottom:4px;
+  }
+  .meta a{ color:var(--muted); }
+  .meta a:hover{ color:var(--accent); }
+  .meta-sep{ color:var(--border); }
+
+  /* ---------- sections ---------- */
+  section{ padding:38px 0; border-top:1px solid var(--border); }
+  section:first-of-type{ border-top:none; }
+
+  .reveal{
+    opacity:0; transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:none; }
+
+  h2.prompt-head{
+    font-family:var(--mono); font-size:13px; color:var(--muted);
+    margin:0 0 18px; letter-spacing:.02em; font-weight:500;
+    display:flex; align-items:center; gap:8px;
+  }
+  h2.prompt-head .sym{ color:var(--accent); }
+  h2.prompt-head .label{ color:var(--text); display:inline-flex; align-items:center; gap:8px; }
+
+  .icon{
+    width:16px; height:16px; flex-shrink:0;
+    fill:none; stroke:var(--accent); stroke-width:1.8;
+    stroke-linecap:round; stroke-linejoin:round;
+  }
+  .icon-fill{ fill:var(--accent); stroke:none; }
+  .skill-group-title{ display:flex; align-items:center; gap:7px; }
+  .skill-group-title .icon{ width:13px; height:13px; stroke:var(--muted); }
+  .meta .icon{ width:13px; height:13px; stroke:var(--muted); vertical-align:-2px; margin-right:2px; }
+  .contact-row a{ display:inline-flex; align-items:center; gap:7px; }
+  .contact-row a .icon{ width:14px; height:14px; stroke:var(--muted); }
+  .contact-row a:hover .icon{ stroke:var(--accent); }
+  .contact-row a .icon-fill{ fill:var(--muted); }
+  .contact-row a:hover .icon-fill{ fill:var(--accent); }
+
+  .about p{ color:var(--text); font-size:15.5px; max-width:62ch; margin:0; }
+
+  /* skills */
+  .skill-group{ margin-bottom:20px; }
+  .skill-group:last-child{ margin-bottom:0; }
+  .skill-group-title{
+    font-family:var(--mono); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--muted); margin-bottom:10px;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0; }
+  .chips li{
+    font-family:var(--mono); font-size:13px;
+    background:var(--panel); border:1px solid var(--border);
+    color:var(--text); padding:6px 11px; border-radius:6px;
+    transition:transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .chips li:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent-dim);
+    background:rgba(242,166,90,0.08);
+  }
+
+  /* experience */
+  .entry{ display:grid; grid-template-columns:1fr; gap:6px; position:relative; padding-left:20px; }
+  .entry::before{
+    content:''; position:absolute; left:0; top:7px;
+    width:7px; height:7px; border-radius:50%; background:var(--accent);
+    box-shadow:0 0 0 0 rgba(242,166,90,.55);
+    animation:pulse-accent 2.4s infinite;
+  }
+  @keyframes pulse-accent{
+    0%{ box-shadow:0 0 0 0 rgba(242,166,90,.5); }
+    70%{ box-shadow:0 0 0 7px rgba(242,166,90,0); }
+    100%{ box-shadow:0 0 0 0 rgba(242,166,90,0); }
+  }
+  .entry-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    flex-wrap:wrap; gap:6px 16px; margin-bottom:6px;
+  }
+  .entry-title{ font-weight:700; font-size:16px; }
+  .entry-org{ color:var(--accent); font-weight:600; }
+  .entry-date{
+    font-family:var(--mono); font-size:12.5px; color:var(--muted);
+    white-space:nowrap;
+  }
+  .entry-loc{ font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .entry ul{ margin:0; padding-left:20px; color:var(--text); font-size:14.5px; }
+  .entry ul li{ margin-bottom:5px; }
+
+  /* projects */
+  .projects{ display:grid; gap:16px; }
+  .project{
+    position:relative; overflow:hidden;
+    background:var(--panel); border:1px solid var(--border);
+    border-radius:10px; padding:20px 22px;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .project::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--accent), transparent);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .project:hover{
+    border-color:var(--accent-dim);
+    transform:translateY(-3px);
+    box-shadow:0 14px 28px -16px rgba(242,166,90,0.35);
+  }
+  .project:hover::before{ transform:scaleX(1); }
+  .project-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+    margin-bottom:8px;
+  }
+  .project-name{ font-weight:700; font-size:15.5px; }
+  .project-link{ font-family:var(--mono); font-size:12px; white-space:nowrap; }
+  .project p{ margin:0 0 12px; font-size:14.5px; color:var(--muted); }
+  .project .chips li{ font-size:12px; padding:4px 9px; }
+
+  /* education */
+  .edu-badge{
+    display:inline-block; font-family:var(--mono); font-size:11.5px;
+    color:var(--accent); border:1px solid var(--accent-dim);
+    background:rgba(242,166,90,0.06);
+    padding:3px 9px; border-radius:20px; margin-top:8px;
+  }
+
+  /* objective */
+  .objective{
+    font-size:15px; color:var(--text); max-width:62ch;
+    border-left:2px solid var(--accent); padding-left:16px;
+  }
+
+  /* footer / contact */
+  footer{
+    border-top:1px solid var(--border);
+    padding:42px 0 60px;
+    text-align:center;
+  }
+  footer .prompt-head{ justify-content:center; margin-bottom:20px; }
+  .contact-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+    margin-bottom:22px;
+  }
+  .contact-row a{
+    font-family:var(--mono); font-size:13px;
+    border:1px solid var(--border); border-radius:8px;
+    padding:9px 16px; color:var(--text);
+    transition:border-color .15s, color .15s, transform .15s;
+  }
+  .contact-row a:hover{
+    border-color:var(--accent); color:var(--accent);
+    text-decoration:none; transform:translateY(-2px);
+  }
+  .ats-note{ font-size:12.5px; color:var(--muted); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:560px){
+    .hero{ padding:56px 0 32px; }
+    .entry-head{ flex-direction:column; align-items:flex-start; }
+    .topbar-actions a.hide-mobile{ display:none; }
+  }
+
+  /* ---------- print (PDF export) ---------- */
+  @media print{
+    .topbar{ position:static; backdrop-filter:none; }
+    .print-btn{ display:none; }
+    body{ background:#fff; color:#111; }
+    .status{ display:none; }
+    section{ border-top:1px solid #ddd; }
+    .project, .chips li{ background:#f5f5f5; border-color:#ddd; }
+    a{ color:#111; text-decoration:underline; }
+    .role, h2.prompt-head .sym, .prompt .sym, .entry-org{ color:#8a5a1f; }
+    #grid-bg, #spotlight, #progress-bar{ display:none; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+    .entry::before{ animation:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor, .status .dot, .entry::before{ animation:none; }
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    #spotlight{ display:none; }
+    .project:hover, .chips li:hover, .contact-row a:hover{ transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="grid-bg" aria-hidden="true"></div>
+<div id="spotlight" aria-hidden="true"></div>
+<div id="progress-bar" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">rafael<span>.</span>dev</div>
+    <div class="topbar-actions">
+      <a href="#contato" class="hide-mobile">contato</a>
+      <a href="https://github.com/rafpadron" target="_blank" rel="noopener">github</a>
+      <a href="https://www.linkedin.com/in/rafpadron" target="_blank" rel="noopener">linkedin</a>
+      <button class="print-btn" onclick="window.print()"><svg class="icon" style="stroke:currentColor; margin-right:5px; vertical-align:-2px" viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M4 19h16"/></svg>baixar PDF</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="status"><span class="dot"></span>disponível para novas oportunidades em TI</div>
+    <p class="prompt"><span class="sym">$</span> whoami</p>
+    <h1>Rafael Alejandro Padrón García<span class="cursor" aria-hidden="true"></span></h1>
+    <p class="role"><span id="role-text" data-text="Desenvolvedor de Software Jr. · Analista de Sistemas Jr."></span><span class="cursor" aria-hidden="true"></span></p>
+    <div class="meta">
+      <span><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Vinhedo, SP — Brasil</span>
+      <span class="meta-sep">/</span>
+      <a href="mailto:rafpadronbr@gmail.com"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>rafpadronbr@gmail.com</a>
+      <span class="meta-sep">/</span>
+      <a href="tel:+5519995664422"><svg class="icon" viewBox="0 0 24 24"><path d="M3.5 4.5c0-1 .8-1.8 1.8-1.8h2.1l1.8 4.3-1.9 1.3c1 2.6 2.9 4.5 5.5 5.5l1.3-1.9 4.3 1.8v2.1c0 1-.8 1.8-1.8 1.8C9.4 17.6 3.5 11.7 3.5 4.5z"/></svg>(19) 99566-4422</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>cat sobre.md</span></h2>
+    <p>Estudante de Análise e Desenvolvimento de Sistemas com formação prática em desenvolvimento de software e tecnologias web. Tenho experiência com Python, JavaScript, Angular, HTML/CSS, Git/GitHub, Docker, Linux e fundamentos de redes e cibersegurança. Busco minha primeira oportunidade profissional em TI, idealmente como Desenvolvedor Jr. ou Analista de Sistemas Jr., para aplicar meus conhecimentos, continuar evoluindo tecnicamente e gerar valor desde o início.</p>
+  </section>
+
+  <section class="skills">
+    <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>ls habilidades/</span></h2>
+
+    <div class="skill-group">
+      <div class="skill-group-title"><svg class="icon" viewBox="0 0 24 24"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>Linguagens</div>
+      <ul class="chips">
+        <li>Python</li><li>JavaScript</li><li>HTML</li><li>CSS</li><li>Java (POO)</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title"><svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Frameworks &amp; Ferramentas</div>
+      <ul class="chips">
+        <li>Angular</li><li>Docker</li><li>Linux / WSL</li><li>Git</li><li>GitHub</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h7a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-7a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h7z"/></svg>Fundamentos</div>
+      <ul class="chips">
+        <li>Programação Orientada a Objetos</li><li>Redes de Computadores</li>
+        <li>Hardware</li><li>Terminal / Linux</li><li>Cibersegurança</li><li>Desenvolvimento Web</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title"><svg class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Banco de Dados</div>
+      <ul class="chips"><li>MySQL</li></ul>
+    </div>
+  </section>
+
+  <section class="experience">
+    <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>git log --experiencia</span></h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div><span class="entry-title">Operador de Loja</span> · <span class="entry-org">Tenda Atacado</span></div>
+        <div class="entry-date">05/2025 — atual</div>
+      </div>
+      <div class="entry-loc">Vinhedo, SP</div>
+      <ul>
+        <li>Atuação em ambiente dinâmico, com atendimento ao cliente e trabalho em equipe.</li>
+        <li>Desenvolvimento de organização, responsabilidade, comunicação e resolução de problemas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>ls -la projetos/</span></h2>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">Automação de processos com n8n</span>
+        </div>
+        <p>Desenvolvimento de automações para otimizar processos de atendimento e gestão de clientes, usando workflows e integrações entre ferramentas.</p>
+        <ul class="chips">
+          <li>n8n</li><li>Docker</li><li>WhatsApp API</li><li>Automação</li><li>IA</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">Bot de atendimento — assistência técnica de TVs</span>
+        </div>
+        <p>Automação para uma loja de conserto de televisores, usando WhatsApp para gerenciar consultas de clientes e apoiar o diagnóstico inicial de problemas.</p>
+        <ul class="chips">
+          <li>n8n</li><li>Docker</li><li>WhatsApp</li><li>IA</li><li>APIs</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">Projetos acadêmicos e pessoais</span>
+          <a class="project-link" href="https://github.com/rafpadron" target="_blank" rel="noopener">github.com/rafpadron →</a>
+        </div>
+        <p>Projetos desenvolvidos durante a formação em Análise de Sistemas, aplicando programação, desenvolvimento web e versionamento com Git/GitHub.</p>
+        <ul class="chips">
+          <li>Python</li><li>Java</li><li>JavaScript</li><li>HTML/CSS</li><li>Angular</li><li>Git/GitHub</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="education">
+    <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>cat formacao.txt</span></h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div><span class="entry-title">Análise e Desenvolvimento de Sistemas</span> · <span class="entry-org">Unianchieta</span></div>
+        <div class="entry-date">2025 — 2027</div>
+      </div>
+      <span class="edu-badge">em andamento</span>
+    </div>
+  </section>
+
+  <section class="objective-section">
+    <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor" stroke="none"/></svg>cat objetivo.txt</span></h2>
+    <p class="objective">Conquistar minha primeira oportunidade profissional na área de TI, especialmente em desenvolvimento de software ou análise de sistemas, transformando minha formação acadêmica e projetos pessoais em experiência profissional real.</p>
+  </section>
+
+</main>
+
+<footer id="contato">
+  <h2 class="prompt-head"><span class="sym">$</span><span class="label"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>contato --info</span></h2>
+  <div class="contact-row">
+    <a href="mailto:rafpadronbr@gmail.com"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>rafpadronbr@gmail.com</a>
+    <a href="tel:+5519995664422"><svg class="icon" viewBox="0 0 24 24"><path d="M3.5 4.5c0-1 .8-1.8 1.8-1.8h2.1l1.8 4.3-1.9 1.3c1 2.6 2.9 4.5 5.5 5.5l1.3-1.9 4.3 1.8v2.1c0 1-.8 1.8-1.8 1.8C9.4 17.6 3.5 11.7 3.5 4.5z"/></svg>(19) 99566-4422</a>
+    <a href="https://www.linkedin.com/in/rafpadron" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="7" y1="10" x2="7" y2="17"/><circle cx="7" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><line x1="12" y1="17" x2="12" y2="11"/><path d="M12 13.5c0-2 2-2.8 3.3-2c1 0.6 1.2 1.7 1.2 2.7v2.8"/></svg>linkedin.com/in/rafpadron</a>
+    <a href="https://github.com/rafpadron" target="_blank" rel="noopener"><svg class="icon icon-fill" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c0.5 0.09 0.68-0.22 0.68-0.48c0-0.24-0.01-0.87-0.01-1.71c-2.78 0.6-3.37-1.34-3.37-1.34c-0.45-1.15-1.11-1.46-1.11-1.46c-0.91-0.62 0.07-0.6 0.07-0.6c1 0.07 1.53 1.03 1.53 1.03c0.89 1.53 2.34 1.09 2.91 0.83c0.09-0.65 0.35-1.09 0.63-1.34c-2.22-0.25-4.56-1.11-4.56-4.95c0-1.09 0.39-1.99 1.03-2.69c-0.1-0.25-0.45-1.27 0.1-2.64c0 0 0.84-0.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03c0.55 1.37 0.2 2.39 0.1 2.64c0.64 0.7 1.03 1.6 1.03 2.69c0 3.85-2.35 4.7-4.58 4.94c0.36 0.31 0.68 0.92 0.68 1.85c0 1.34-0.01 2.42-0.01 2.75c0 0.27 0.18 0.58 0.69 0.48A10 10 0 0 0 12 2z"/></svg>github.com/rafpadron</a>
+  </div>
+  <p class="ats-note">Vinhedo, SP — Brasil · currículo otimizado para leitura humana e sistemas ATS</p>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Efeito de "digitação" no subtítulo
+  var roleEl = document.getElementById('role-text');
+  if (roleEl) {
+    var fullText = roleEl.dataset.text || '';
+    if (reduceMotion) {
+      roleEl.textContent = fullText;
+    } else {
+      var i = 0;
+      (function type(){
+        roleEl.textContent = fullText.slice(0, i);
+        i++;
+        if (i <= fullText.length) requestAnimationFrame(function(){ setTimeout(type, 22); });
+      })();
+    }
+  }
+
+  // Spotlight que segue o mouse (apenas em telas com mouse de precisão)
+  if (!reduceMotion && fineHover) {
+    window.addEventListener('mousemove', function(e){
+      document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--my', e.clientY + 'px');
+    }, { passive: true });
+  }
+
+  // Barra de progresso de leitura
+  var bar = document.getElementById('progress-bar');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1) * 100;
+    if (bar) bar.style.width = scrolled + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Revelar seções ao rolar a página
+  var revealTargets = document.querySelectorAll('main > section, footer');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    revealTargets.forEach(function(el){ el.classList.add('reveal'); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealTargets.forEach(function(el){ observer.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>
